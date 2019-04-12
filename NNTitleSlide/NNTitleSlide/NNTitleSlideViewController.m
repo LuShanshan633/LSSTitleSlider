@@ -11,7 +11,7 @@
 #define NN_SCREEN_WIDTH  [[UIScreen mainScreen] bounds].size.width
 #define NN_STATUSBAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
 
-@interface NNTitleSlideViewController ()<UIScrollViewDelegate>{
+@interface NNTitleSlideViewController ()<UIScrollViewDelegate,UIGestureRecognizerDelegate>{
     CGFloat offX;
 
 }
@@ -34,15 +34,18 @@
     // Do any additional setup after loading the view.
 }
 -(void)addTopView{
-    self.navView.frame = CGRectMake(0, NN_STATUSBAR_HEIGHT, NN_SCREEN_WIDTH, 44);
-//    [self.navView setBackgroundColor:[UIColor redColor]];
-    [self.navigationController.view addSubview:self.navView];
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(titlesWithNavVC:)]) {
-        
         NSArray * titles = [self.dataSource titlesWithNavVC:self];
-        offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - titles.count * self.btnWidth)/2.0 : 15;
+
+        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 40 : 0, 0, NN_SCREEN_WIDTH-80, 44);
+        [self.navigationController.navigationBar addSubview:self.navView];
+
+        offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 80 - titles.count * self.btnWidth)/2.0 : 15;
         
         self.sliderLabel.backgroundColor = self.slideColor;
+        self.sliderLabel.layer.masksToBounds = YES;
+        self.sliderLabel.layer.cornerRadius = self.slideHeight/2.0;
+        
         [self.navView addSubview: self.sliderLabel];
         for (int i = 0; i < titles.count; i++) {
             UIButton * btn = [[UIButton alloc]init];
@@ -55,7 +58,7 @@
             if (i == self.currentIndex) {
                 btn.selected = YES;
                 btn.titleLabel.font = self.selectTitleFont;
-                self.sliderLabel.frame = CGRectMake((self.btnWidth - 16 )/2.0 + offX + self.btnWidth * i, 44-self.slideHeight, 16, self.slideHeight);
+                self.sliderLabel.frame = CGRectMake((self.btnWidth - 16 )/2.0 + offX + self.btnWidth * i, 44-self.slideHeight-3, 16, self.slideHeight);
             }
             [self.navView addSubview:btn];
             [btn addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -74,13 +77,6 @@
             //添加背景，把三个VC的view贴到mainScrollView上面
             UIView *pageView = [[UIView alloc]initWithFrame:CGRectMake(NN_SCREEN_WIDTH * i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
             UIViewController * vc = vcs[i];
-            if (i == 0) {
-                vc.view.backgroundColor = [UIColor redColor];
-            }else if (i == 1){
-                vc.view.backgroundColor = [UIColor greenColor];
-            }else{
-                vc.view.backgroundColor = [UIColor yellowColor];
-            }
             [self addChildViewController:vc];
             [pageView addSubview:vc.view];
             [self.scrollView addSubview:pageView];
@@ -187,7 +183,6 @@
 -(void)setStyle:(NNTitleSlideStyle)style{
     _style = style;
 
-//    [self addTopView];
     [self addTopView];
     [self addScrollView];
 
@@ -201,11 +196,16 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navView.hidden = YES;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+
     self.navView.hidden = NO;
+    [self.navigationController.navigationBar bringSubviewToFront:self.navView];
 }
 
 
