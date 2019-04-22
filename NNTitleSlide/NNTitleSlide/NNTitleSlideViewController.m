@@ -210,9 +210,18 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//    self.navView.hidden = YES;
-    
-
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+            for (UIView *views in view.subviews) {
+                if ([views isKindOfClass:[NNTitleSlideView class]]) {
+                    views.hidden = YES;
+                }
+            }
+        }
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
