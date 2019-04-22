@@ -15,8 +15,6 @@
     CGFloat offX;
 
 }
-@property(nonatomic,strong)UILabel * sliderLabel;
-@property(nonatomic,strong)UIView * navView;
 
 @end
 
@@ -36,11 +34,28 @@
 -(void)addTopView{
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(titlesWithNavVC:)]) {
         NSArray * titles = [self.dataSource titlesWithNavVC:self];
+        
+        //防止重复创建
+        for (UIView *view in self.navigationController.navigationBar.subviews) {
+            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+                for (UIView *views in view.subviews) {
+                    if ([views isKindOfClass:[NNTitleSlideView class]]) {
+                        [views removeFromSuperview];
+                    }
+                }
+                
+            }
+        }
 
-        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 40 : 0, 0, NN_SCREEN_WIDTH-80, 44);
-        [self.navigationController.navigationBar addSubview:self.navView];
+        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 40 : 0, 0, NN_SCREEN_WIDTH-120, 44);
+        for (UIView *view in self.navigationController.navigationBar.subviews) {
+            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+                NSLog(@"%@",view);
+                [view addSubview:self.navView];
+            }
+        }
 
-        offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 80 - titles.count * self.btnWidth)/2.0 : 15;
+        offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 120 - titles.count * self.btnWidth)/2.0 : 15;
         
         self.sliderLabel.backgroundColor = self.slideColor;
         self.sliderLabel.layer.masksToBounds = YES;
@@ -162,9 +177,9 @@
     }
     return _sliderLabel;
 }
--(UIView*)navView{
+-(NNTitleSlideView*)navView{
     if (!_navView) {
-        _navView = [[UIView alloc]init];
+        _navView = [[NNTitleSlideView alloc]init];
     }
     return _navView;
 }
@@ -195,7 +210,8 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navView.hidden = YES;
+//    self.navView.hidden = YES;
+    
 
 }
 
@@ -203,8 +219,18 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
-
-    self.navView.hidden = NO;
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+            for (UIView *views in view.subviews) {
+                if ([views isKindOfClass:[NNTitleSlideView class]]) {
+                    if (views.hidden == YES) {
+                        views.hidden = NO;
+                    }
+                }
+            }
+            
+        }
+    }
     [self.navigationController.navigationBar bringSubviewToFront:self.navView];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NNTitleSlideView.h"
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, NNTitleSlideStyle) {
     NNTitleSlideStyleCenter,
@@ -83,7 +83,8 @@ typedef NS_ENUM(NSInteger, NNTitleSlideStyle) {
 
 @property (strong, nonatomic)UIScrollView* scrollView;
 
-
+@property(nonatomic,strong)NNTitleSlideView * navView;
+@property(nonatomic,strong)UILabel * sliderLabel;
 
 @end
 

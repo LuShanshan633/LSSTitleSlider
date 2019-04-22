@@ -7,6 +7,7 @@
 //
 
 #import "ExampleViewController.h"
+#import "ChildViewController.h"
 
 @interface ExampleViewController ()<NNTitleSlideViewControllerDataSource,NNTitleSlideViewControllerDelegate>
 
@@ -33,7 +34,7 @@
     NSLog(@"%d",index);
 }
 -(NSArray*)childViewControllersWithNavVC:(NNTitleSlideViewController *)slideVC{
-    return @[[[UIViewController alloc] init] ,[[UIViewController alloc] init] ,[[UIViewController alloc] init]  ];
+    return @[[[ChildViewController alloc] init] ,[[ChildViewController alloc] init] ,[[ChildViewController alloc] init]  ];
 }
 -(NSArray*)titlesWithNavVC:(NNTitleSlideViewController *)slideVC{
     return @[@"哈哈哈",@"呵呵呵",@"dd"];

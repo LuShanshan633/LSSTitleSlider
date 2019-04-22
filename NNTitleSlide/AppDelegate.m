@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ExampleViewController.h"
+#import "NNNavigationViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:[[ExampleViewController alloc]init]];
+    UINavigationController * nav = [[NNNavigationViewController alloc]initWithRootViewController:[[ExampleViewController alloc]init]];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
