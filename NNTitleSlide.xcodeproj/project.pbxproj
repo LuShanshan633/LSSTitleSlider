@@ -17,6 +17,7 @@
 		0DBF74FD225EDCA90009078F /* NNTitleSlideUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF74FC225EDCA90009078F /* NNTitleSlideUITests.m */; };
 		0DBF7510225EE63A0009078F /* NNTitleSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF750F225EE63A0009078F /* NNTitleSlideViewController.m */; };
 		0DBF7516225EF62F0009078F /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF7515225EF62F0009078F /* ExampleViewController.m */; };
+		0DCCFF6B228BB057009E372B /* PushOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCCFF6A228BB057009E372B /* PushOneViewController.m */; };
 		0DEA7269226D671600514956 /* NNTitleSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7267226D671600514956 /* NNTitleSlideView.m */; };
 		0DEA726C226D675500514956 /* NNNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA726B226D675500514956 /* NNNavigationViewController.m */; };
 		0DEA726F226D685000514956 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA726E226D685000514956 /* ChildViewController.m */; };
@@ -60,6 +61,8 @@
 		0DBF750F225EE63A0009078F /* NNTitleSlideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNTitleSlideViewController.m; sourceTree = "<group>"; };
 		0DBF7514225EF62F0009078F /* ExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
 		0DBF7515225EF62F0009078F /* ExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
+		0DCCFF69228BB057009E372B /* PushOneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushOneViewController.h; sourceTree = "<group>"; };
+		0DCCFF6A228BB057009E372B /* PushOneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushOneViewController.m; sourceTree = "<group>"; };
 		0DEA7267226D671600514956 /* NNTitleSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNTitleSlideView.m; sourceTree = "<group>"; };
 		0DEA7268226D671600514956 /* NNTitleSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNTitleSlideView.h; sourceTree = "<group>"; };
 		0DEA726A226D675500514956 /* NNNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NNNavigationViewController.h; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				0DBF7515225EF62F0009078F /* ExampleViewController.m */,
 				0DEA726D226D685000514956 /* ChildViewController.h */,
 				0DEA726E226D685000514956 /* ChildViewController.m */,
+				0DCCFF69228BB057009E372B /* PushOneViewController.h */,
+				0DCCFF6A228BB057009E372B /* PushOneViewController.m */,
 				0DBF74DE225EDCA60009078F /* Main.storyboard */,
 				0DBF750A225EDCF10009078F /* NNTitleSlide */,
 				0DBF74E1225EDCA90009078F /* Assets.xcassets */,
@@ -296,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DBF74DD225EDCA60009078F /* ViewController.m in Sources */,
+				0DCCFF6B228BB057009E372B /* PushOneViewController.m in Sources */,
 				0DEA726C226D675500514956 /* NNNavigationViewController.m in Sources */,
 				0DBF7510225EE63A0009078F /* NNTitleSlideViewController.m in Sources */,
 				0DEA726F226D685000514956 /* ChildViewController.m in Sources */,
@@ -474,7 +480,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 397NFR5D42;
 				INFOPLIST_FILE = NNTitleSlide/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,7 +498,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 397NFR5D42;
 				INFOPLIST_FILE = NNTitleSlide/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

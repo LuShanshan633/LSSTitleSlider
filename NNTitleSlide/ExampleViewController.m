@@ -9,6 +9,7 @@
 #import "ExampleViewController.h"
 #import "ChildViewController.h"
 
+
 @interface ExampleViewController ()<NNTitleSlideViewControllerDataSource,NNTitleSlideViewControllerDelegate>
 
 @end
@@ -27,6 +28,8 @@
 //    self.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
     self.currentIndex = 1;
     self.style = NNTitleSlideStyleLeft;
+    
+    
     
     // Do any additional setup after loading the view.
 }

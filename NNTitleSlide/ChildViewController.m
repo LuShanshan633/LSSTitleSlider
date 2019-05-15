@@ -7,7 +7,7 @@
 //
 
 #import "ChildViewController.h"
-
+#import "PushOneViewController.h"
 @interface ChildViewController ()
 
 @end
@@ -19,6 +19,7 @@
     
     UIButton * btn = [[UIButton alloc]init];
     btn.frame = CGRectMake(100, 100, 200, 40);
+    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [btn setTitle:@"push" forState:UIControlStateNormal];
     [self.view addSubview:btn];
     [btn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
@@ -26,7 +27,7 @@
 }
 
 -(void)push{
-    [self.navigationController pushViewController:[UIViewController new] animated:YES];
+    [self.navigationController pushViewController:[[PushOneViewController alloc]init] animated:YES];
 }
 
 /*

@@ -34,27 +34,26 @@
 -(void)addTopView{
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(titlesWithNavVC:)]) {
         NSArray * titles = [self.dataSource titlesWithNavVC:self];
-        
-        //防止重复创建
         for (UIView *view in self.navigationController.navigationBar.subviews) {
             if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
                 for (UIView *views in view.subviews) {
                     if ([views isKindOfClass:[NNTitleSlideView class]]) {
+                        NSLog(@"%@",views);
+                        for (UIView * btnx  in views.subviews) {
+                            [btnx removeFromSuperview];
+                        }
                         [views removeFromSuperview];
                     }
                 }
-                
             }
         }
-
-        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 40 : 0, 0, NN_SCREEN_WIDTH-120, 44);
+        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 60 : 0, 0, NN_SCREEN_WIDTH-120, 44);
         for (UIView *view in self.navigationController.navigationBar.subviews) {
             if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-                NSLog(@"%@",view);
                 [view addSubview:self.navView];
             }
         }
-
+        
         offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 120 - titles.count * self.btnWidth)/2.0 : 15;
         
         self.sliderLabel.backgroundColor = self.slideColor;
@@ -77,13 +76,13 @@
             }
             [self.navView addSubview:btn];
             [btn addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventTouchUpInside];
-
         }
+        //防止重复创建
+
     }
 
 }
 -(void)addScrollView{
-
     [self.view addSubview:self.scrollView];
     //调用dataSource
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(childViewControllersWithNavVC:)]) {
@@ -210,18 +209,19 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+//    for (UIView *view in self.navigationController.navigationBar.subviews) {
+//        if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+//            for (UIView *views in view.subviews) {
+//                if ([views isKindOfClass:[NNTitleSlideView class]]) {
+//                    [views removeFromSuperview];
+//                }
+//            }
+//        }
+//    }
+
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    for (UIView *view in self.navigationController.navigationBar.subviews) {
-        if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-            for (UIView *views in view.subviews) {
-                if ([views isKindOfClass:[NNTitleSlideView class]]) {
-                    views.hidden = YES;
-                }
-            }
-        }
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -232,14 +232,14 @@
         if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
             for (UIView *views in view.subviews) {
                 if ([views isKindOfClass:[NNTitleSlideView class]]) {
-                    if (views.hidden == YES) {
-                        views.hidden = NO;
-                    }
+                }else{
+                    NSLog(@"=====%@",views);
                 }
             }
-            
+
         }
     }
+    [self addTopView];
     [self.navigationController.navigationBar bringSubviewToFront:self.navView];
 }
 
