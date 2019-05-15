@@ -34,36 +34,7 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     [self.view endEditing:YES];//强制收键盘
-//    for (int i = 0; i<self.viewControllers.count; i++) {
-//        if (i == self.viewControllers.count-1) {
-//            UIViewController * vcs = self.viewControllers[self.viewControllers.count - 1];
-//            if ([vcs isKindOfClass:[NNTitleSlideViewController class]]) {
-//                for (UIView *view in vcs.navigationController.navigationBar.subviews) {
-//                    if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-//                        for (UIView *views in view.subviews) {
-//                            if ([views isKindOfClass:[NNTitleSlideView class]]) {
-//                                [views removeFromSuperview];
-//                            }
-//                        }
-//                        
-//                    }
-//                }
-//                
-//            }else{
-//                for (UIView *view in vcs.navigationController.navigationBar.subviews) {
-//                    if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-//                        for (UIView *views in view.subviews) {
-//                            if ([views isKindOfClass:[NNTitleSlideView class]]) {
-//                                [views removeFromSuperview];
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
     [super pushViewController:viewController animated:animated];
-
 }
 
 /*

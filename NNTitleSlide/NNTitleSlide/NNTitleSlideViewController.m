@@ -34,27 +34,50 @@
 -(void)addTopView{
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(titlesWithNavVC:)]) {
         NSArray * titles = [self.dataSource titlesWithNavVC:self];
-        for (UIView *view in self.navigationController.navigationBar.subviews) {
-            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-                for (UIView *views in view.subviews) {
-                    if ([views isKindOfClass:[NNTitleSlideView class]]) {
-                        NSLog(@"%@",views);
-                        for (UIView * btnx  in views.subviews) {
-                            [btnx removeFromSuperview];
-                        }
-                        [views removeFromSuperview];
-                    }
-                }
-            }
+//        for (UIView *view in self.navigationController.navigationBar.subviews) {
+//            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+//                for (UIView *views in view.subviews) {
+//                    if ([views isKindOfClass:[NNTitleSlideView class]]) {
+//                        NSLog(@"%@",views);
+//                        for (UIView * btnx  in views.subviews) {
+//                            [btnx removeFromSuperview];
+//                        }
+//                        [views removeFromSuperview];
+//                    }
+//                }
+//            }
+//        }
+        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 20 : -200, 0, NN_SCREEN_WIDTH-80, 44);
+//        for (UIView *view in self.navigationController.navigationBar.subviews) {
+//            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
+//                [view addSubview:self.navView];
+//            }
+//        }
+        if (self.style == NNTitleSlideStyleCenter) {
+            UIButton * backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 20)];
+            [backBtn setTitle:@"返回" forState:UIControlStateNormal];
+            [backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
+            self.navigationItem.leftBarButtonItem = item;
+            self.navigationItem.titleView = self.navView;
+            //占位，使titleview居中
+            UIButton * rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 20)];
+            [rightBtn setTitle:@"返回" forState:UIControlStateNormal];
+            [rightBtn setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+            UIBarButtonItem * items = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+            self.navigationItem.rightBarButtonItem = items;
+
+        }else{
+            UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:self.navView];
+            self.navigationItem.leftBarButtonItem = item;
+
         }
-        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 60 : 0, 0, NN_SCREEN_WIDTH-120, 44);
-        for (UIView *view in self.navigationController.navigationBar.subviews) {
-            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-                [view addSubview:self.navView];
-            }
-        }
+//        UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:self.navView];
+//        self.navigationItem.rightBarButtonItem = item;
+//        self.navigationItem.titleView = self.navView;
+//        [ addSubview:self.navView];
         
-        offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 120 - titles.count * self.btnWidth)/2.0 : 15;
+        offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 120 - titles.count * self.btnWidth)/2.0 : 0;
         
         self.sliderLabel.backgroundColor = self.slideColor;
         self.sliderLabel.layer.masksToBounds = YES;
@@ -209,15 +232,6 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//    for (UIView *view in self.navigationController.navigationBar.subviews) {
-//        if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-//            for (UIView *views in view.subviews) {
-//                if ([views isKindOfClass:[NNTitleSlideView class]]) {
-//                    [views removeFromSuperview];
-//                }
-//            }
-//        }
-//    }
 
 }
 -(void)viewDidDisappear:(BOOL)animated{
@@ -227,20 +241,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    for (UIView *view in self.navigationController.navigationBar.subviews) {
-        if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-            for (UIView *views in view.subviews) {
-                if ([views isKindOfClass:[NNTitleSlideView class]]) {
-                }else{
-                    NSLog(@"=====%@",views);
-                }
-            }
-
-        }
-    }
-    [self addTopView];
-    [self.navigationController.navigationBar bringSubviewToFront:self.navView];
 }
 
 
