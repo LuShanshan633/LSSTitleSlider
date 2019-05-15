@@ -47,12 +47,8 @@
 //                }
 //            }
 //        }
-        self.navView.frame = CGRectMake(self.style == NNTitleSlideStyleCenter ? 20 : -200, 0, NN_SCREEN_WIDTH-80, 44);
-//        for (UIView *view in self.navigationController.navigationBar.subviews) {
-//            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-//                [view addSubview:self.navView];
-//            }
-//        }
+        self.navView.frame = CGRectMake(0, 0, NN_SCREEN_WIDTH-80, 44);
+
         if (self.style == NNTitleSlideStyleCenter) {
             UIButton * backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 20)];
             [backBtn setTitle:@"返回" forState:UIControlStateNormal];
@@ -72,10 +68,6 @@
             self.navigationItem.leftBarButtonItem = item;
 
         }
-//        UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:self.navView];
-//        self.navigationItem.rightBarButtonItem = item;
-//        self.navigationItem.titleView = self.navView;
-//        [ addSubview:self.navView];
         
         offX = self.style == NNTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 120 - titles.count * self.btnWidth)/2.0 : 0;
         
