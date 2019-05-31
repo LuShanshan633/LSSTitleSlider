@@ -3,6 +3,7 @@
 # 使用  
 ### navigationbar不可以隐藏！！！！！
 //继承 NNTitleSlideViewController(不需要import)
+```
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = self;//必要(记得引用delegate和DataSource)
@@ -25,3 +26,4 @@
 -(NSArray*)titlesWithNavVC:(NNTitleSlideViewController *)slideVC{
     return @[@"我是",@"小",@"仙女"];
 }
+```
