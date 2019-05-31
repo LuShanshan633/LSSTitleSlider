@@ -13,7 +13,6 @@
     self.btnWidth = 50;
     self.slideHeight = 4;
     self.slideColor = TextThemeColor;
-
     self.style = NNTitleSlideStyleLeft;//必设置
     //使带有scrollview的页面拥有侧滑手势，否则会引起手势冲突
     [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
