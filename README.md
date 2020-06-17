@@ -24,6 +24,6 @@
     return @[];//viewController数组,不想写，自己看demo吧
 }
 -(NSArray*)titlesWithNavVC:(NNTitleSlideViewController *)slideVC{
-    return @[@"我是",@"小",@"仙女"];
+    return @[@"11",@"22",@"333"];
 }
 ```
