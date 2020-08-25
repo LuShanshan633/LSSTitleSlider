@@ -1,6 +1,6 @@
-# NNTitleSlide
+# LSSTitleSlider
 
-# 使用  
+# 导航栏滑动标签使用
 ### navigationbar不可以隐藏！！！！！
 //继承 LSSTitleSliderViewController(不需要import)
 ```
