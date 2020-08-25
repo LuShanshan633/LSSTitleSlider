@@ -14,16 +14,16 @@
     self.btnWidth = 50;
     self.slideHeight = 4;
     self.slideColor = TextThemeColor;
-    self.style = NNTitleSlideStyleLeft;//必设置
+    self.style = LSSTitlerSlideStyleLeft;//必设置
     //使带有scrollview的页面拥有侧滑手势，否则会引起手势冲突
     [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
 
 }
 
--(NSArray*)childViewControllersWithNavVC:(NNTitleSlideViewController *)slideVC{
+-(NSArray*)childViewControllersWithNavVC:(LSSTitleSliderViewController *)slideVC{
     return @[];//viewController数组,不想写，自己看demo吧
 }
--(NSArray*)titlesWithNavVC:(NNTitleSlideViewController *)slideVC{
+-(NSArray*)titlesWithNavVC:(LSSTitleSlideVierwController *)slideVC{
     return @[@"11",@"22",@"333"];
 }
 ```
