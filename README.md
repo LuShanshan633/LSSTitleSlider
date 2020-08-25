@@ -2,7 +2,7 @@
 
 # 使用  
 ### navigationbar不可以隐藏！！！！！
-//继承 NNTitleSlideViewController(不需要import)
+//继承 LSSTitleSliderViewController(不需要import)
 ```
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,7 +23,7 @@
 -(NSArray*)childViewControllersWithNavVC:(LSSTitleSliderViewController *)slideVC{
     return @[];//viewController数组,不想写，自己看demo吧
 }
--(NSArray*)titlesWithNavVC:(LSSTitleSlideVierwController *)slideVC{
+-(NSArray*)titlesWithNavVC:(LSSTitleSliderVierwController *)slideVC{
     return @[@"11",@"22",@"333"];
 }
 ```
