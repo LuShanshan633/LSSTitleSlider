@@ -27,7 +27,7 @@
     self.config.selectTitleColor = [UIColor colorWithRed:0/255.0 green:192/255.0 blue:255/255.0 alpha:1];
     self.config.slideColor = self.config.selectTitleColor;
     self.config.scrollHeight = 200;
-    self.config.scrollWidth = 200;//目前鸡肋，目前只适用宽度为手机屏幕
+    //self.config.scrollWidth = 200;//目前鸡肋，目前只适用宽度为手机屏幕
     self.config.style = LSSTitleSlideStyleLeft;
     self.view.backgroundColor = [UIColor greenColor];
     //UI布局
