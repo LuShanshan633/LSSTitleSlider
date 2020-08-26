@@ -5,6 +5,7 @@
 ```
 # 导航栏滑动标签使用
 ### navigationbar不可以隐藏！！！！！
+参考Example
 //继承 LSSTitleSliderViewController(不需要import)
 ```
 - (void)viewDidLoad {
