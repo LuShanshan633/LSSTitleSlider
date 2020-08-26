@@ -96,7 +96,8 @@
         for (int i = 0; i < vcs.count; i++){
             //添加背景，把三个VC的view贴到mainScrollView上面
             LSSTitleSlideView *pageView = [vcs objectAtIndex:i];
-            [self.scrollView addSubview:pageView];
+            pageView.frame = CGRectMake(self.config.scrollWidth * i, 0, self.config.scrollWidth, self.config.scrollHeight);
+            [self.scrollView addSubview:[vcs objectAtIndex:i]];
         }
         self.scrollView.contentSize = CGSizeMake(self.config.scrollWidth * (vcs.count), self.config.scrollHeight);
         self.scrollView.contentOffset = CGPointMake(self.config.scrollWidth * self.config.currentIndex, self.config.scrollHeight);
