@@ -95,7 +95,7 @@
         NSArray * vcs = [self.dataSource childViewControllersWithNavVC:self];
         for (int i = 0; i < vcs.count; i++){
             //添加背景，把三个VC的view贴到mainScrollView上面
-            LSSTitleSlideView *pageView = [[LSSTitleSlideView alloc]initWithFrame:CGRectMake(self.config.scrollWidth * i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+            LSSTitleSlideView *pageView = [vcs objectAtIndex:i];
             [self.scrollView addSubview:pageView];
         }
         self.scrollView.contentSize = CGSizeMake(self.config.scrollWidth * (vcs.count), self.config.scrollHeight);
@@ -169,7 +169,7 @@
 
 -(void)sliderAction:(UIButton *)sender{
     [UIView animateWithDuration:0.3 animations:^{
-        self.scrollView.contentOffset = CGPointMake(NN_SCREEN_WIDTH * (sender.tag-10), 0);
+        self.scrollView.contentOffset = CGPointMake(self.config.scrollWidth * (sender.tag-10), 0);
     } completion:^(BOOL finished) {
         [self sliderAnimationWithTag:0 fromIndex:self.config.currentIndex toIndex:sender.tag-10 offset:1 lineOffset:sender.tag-10];
         self.config.currentIndex = sender.tag-10;
