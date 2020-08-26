@@ -27,16 +27,23 @@
     self.config.selectTitleColor = [UIColor colorWithRed:0/255.0 green:192/255.0 blue:255/255.0 alpha:1];
     self.config.slideColor = self.config.selectTitleColor;
     self.config.currentIndex = 1;
+    self.config.scrollHeight = 200;
     self.config.style = LSSTitleSlideStyleLeft;
+    self.view.backgroundColor = [UIColor greenColor];
     //UI布局
     [self loadNavSliderView];
+    self.scrollView.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }
 -(void)clickWithIndex:(NSInteger)index{
     NSLog(@"%ld",(long)index);
 }
 -(NSArray*)childViewControllersWithNavVC:(LSSTitleSlideViewController *)slideVC{
-    return @[[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init]];
+    LSSTitleSlideView * one = [[LSSTitleSlideView alloc]init];
+    one.backgroundColor = [UIColor purpleColor];
+    LSSTitleSlideView * two = [[LSSTitleSlideView alloc]init];
+    one.backgroundColor = [UIColor yellowColor];
+    return @[one ,two ,one ,one ,[[LSSTitleSlideView alloc] init]];
 }
 -(NSArray*)titlesWithNavVC:(LSSTitleSlideViewController *)slideVC{
     return @[@"首页",@"推荐",@"关注",@"关注",@"关注"];

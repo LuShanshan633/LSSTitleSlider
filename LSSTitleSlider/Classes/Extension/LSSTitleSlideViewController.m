@@ -95,11 +95,11 @@
         NSArray * vcs = [self.dataSource childViewControllersWithNavVC:self];
         for (int i = 0; i < vcs.count; i++){
             //添加背景，把三个VC的view贴到mainScrollView上面
-            LSSTitleSlideView *pageView = [[LSSTitleSlideView alloc]initWithFrame:CGRectMake(NN_SCREEN_WIDTH * i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+            LSSTitleSlideView *pageView = [[LSSTitleSlideView alloc]initWithFrame:CGRectMake(self.config.scrollWidth * i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
             [self.scrollView addSubview:pageView];
         }
-        self.scrollView.contentSize = CGSizeMake(NN_SCREEN_WIDTH * (vcs.count), 0);
-        self.scrollView.contentOffset = CGPointMake(NN_SCREEN_WIDTH * self.config.currentIndex, 0);
+        self.scrollView.contentSize = CGSizeMake(self.config.scrollWidth * (vcs.count), self.config.scrollHeight);
+        self.scrollView.contentOffset = CGPointMake(self.config.scrollWidth * self.config.currentIndex, self.config.scrollHeight);
 
         }
 
@@ -257,10 +257,10 @@
     
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    int index_ = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
-    CGFloat scale = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
-    int index_s = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
-    CGFloat scales = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
+    int index_ = scrollView.contentOffset.x / self.config.scrollWidth;
+    CGFloat scale = scrollView.contentOffset.x / self.config.scrollWidth;
+    int index_s = scrollView.contentOffset.x / self.config.scrollWidth;
+    CGFloat scales = scrollView.contentOffset.x / self.config.scrollWidth;
     if (self.config.currentIndex == index_s && scales>index_s) {
         index_s = index_s+1;
     }
@@ -269,7 +269,7 @@
     }else{
         scale = scale - index_;
     }
-    [self sliderAnimationWithTag:index_+10 fromIndex:self.config.currentIndex toIndex:index_s offset:scale lineOffset:scrollView.contentOffset.x / NN_SCREEN_WIDTH];
+    [self sliderAnimationWithTag:index_+10 fromIndex:self.config.currentIndex toIndex:index_s offset:scale lineOffset:scrollView.contentOffset.x / self.config.scrollWidth];
 
 }
 -(LSSTitleSliderConfig*)config{
@@ -282,7 +282,7 @@
 //判断是否切换导航条按钮的状态
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    int index_ = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
+    int index_ = scrollView.contentOffset.x / self.config.scrollWidth;
     self.config.currentIndex = index_;
     if (self.delegate) {
         [self.delegate clickWithIndex:index_];
