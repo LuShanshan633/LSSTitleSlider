@@ -61,6 +61,10 @@ NS_ASSUME_NONNULL_BEGIN
  按钮宽度
  */
 @property (assign, nonatomic)CGFloat btnWidth;
+/**
+ 当前默认索引
+ */
+@property (assign, nonatomic)NSInteger currentIndex;
 
 @end
 

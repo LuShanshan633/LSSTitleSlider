@@ -85,11 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
 // */
 //@property (assign, nonatomic)CGFloat btnWidth;
 
-/**
- 当前默认索引
- */
-@property (assign, nonatomic)NSInteger currentIndex;
-
+-(void)loadNavSliderView;
 @property (strong, nonatomic)UIScrollView* scrollView;
 
 @property(nonatomic,strong)LSSTitleSlideView * navView;

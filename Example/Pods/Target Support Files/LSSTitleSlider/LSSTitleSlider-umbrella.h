@@ -12,6 +12,7 @@
 
 #import "LSSNavigationViewController.h"
 #import "LSSTitleSlider.h"
+#import "LSSTitleSliderConfig.h"
 #import "LSSTitleSlideView.h"
 #import "LSSTitleSlideViewController.h"
 

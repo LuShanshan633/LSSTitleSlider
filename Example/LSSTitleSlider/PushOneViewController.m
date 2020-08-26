@@ -21,12 +21,12 @@
     [super viewDidLoad];
     self.dataSource = self;
     self.delegate = self;
-    self.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    self.selectTitleColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
-    self.slideHeight = 2;
-    self.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
-    self.currentIndex = 0;
-    self.style = LSSTitleSlideStyleCenter;
+    self.config.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+    self.config.selectTitleColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+    self.config.slideHeight = 2;
+    self.config.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+    self.config.currentIndex = 0;
+    self.config.style = LSSTitleSlideStyleCenter;
     
     //使带有scrollview的页面拥有侧滑手势，否则会引起手势冲突
     [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];

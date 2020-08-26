@@ -18,16 +18,16 @@
     [super viewDidLoad];
     self.dataSource = self;
     self.delegate = self;
-    self.normalTitleSize = 12;
-    self.selectTitleSize = 20;
-    self.btnWidth = 60;
-    self.slideHeight = 2;
-    self.slideWidth = 20;
-    self.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    self.selectTitleColor = [UIColor colorWithRed:0/255.0 green:192/255.0 blue:255/255.0 alpha:1];
-    self.slideColor = self.selectTitleColor;
-    self.currentIndex = 1;
-    self.style = LSSTitleSlideStyleLeft;
+    self.config.normalTitleSize = 12;
+    self.config.selectTitleSize = 20;
+    self.config.btnWidth = 60;
+    self.config.slideHeight = 2;
+    self.config.slideWidth = 20;
+    self.config.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+    self.config.selectTitleColor = [UIColor colorWithRed:0/255.0 green:192/255.0 blue:255/255.0 alpha:1];
+    self.config.slideColor = self.config.selectTitleColor;
+    self.config.currentIndex = 1;
+    self.config.style = LSSTitleSlideStyleLeft;
 
     // Do any additional setup after loading the view.
 }
@@ -35,7 +35,7 @@
     NSLog(@"%ld",(long)index);
 }
 -(NSArray*)childViewControllersWithNavVC:(LSSTitleSlideViewController *)slideVC{
-    return @[[[ChildViewController alloc] init] ,[[ChildViewController alloc] init] ,[[ChildViewController alloc] init]  ];
+    return @[[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init]  ];
 }
 -(NSArray*)titlesWithNavVC:(LSSTitleSlideViewController *)slideVC{
     return @[@"首页",@"推荐",@"关注"];

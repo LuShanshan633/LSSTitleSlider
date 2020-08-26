@@ -73,7 +73,7 @@
             btn.tag = i+10;
             [btn setTitleColor:self.config.normalTitleColor forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont fontWithName:self.config.normalTitleFontStr size:self.config.normalTitleSize];
-            if (i == self.currentIndex) {
+            if (i == self.config.currentIndex) {
                 [btn setTitleColor:self.config.selectTitleColor forState:UIControlStateNormal];
                 btn.titleLabel.font = [UIFont fontWithName:self.config.selectTitleFontStr size:self.config.selectTitleSize];
                 self.sliderLabel.frame = CGRectMake((self.config.btnWidth - self.config.slideWidth )/2.0 + offX + self.config.btnWidth * i, 44-self.config.slideHeight-3, self.config.slideWidth, self.config.slideHeight);
@@ -97,7 +97,7 @@
             [self.scrollView addSubview:pageView];
         }
         self.scrollView.contentSize = CGSizeMake(NN_SCREEN_WIDTH * (vcs.count), 0);
-        self.scrollView.contentOffset = CGPointMake(NN_SCREEN_WIDTH * self.currentIndex, 0);
+        self.scrollView.contentOffset = CGPointMake(NN_SCREEN_WIDTH * self.config.currentIndex, 0);
 
         }
 
@@ -169,8 +169,8 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.scrollView.contentOffset = CGPointMake(NN_SCREEN_WIDTH * (sender.tag-10), 0);
     } completion:^(BOOL finished) {
-        [self sliderAnimationWithTag:0 fromIndex:self.currentIndex toIndex:sender.tag-10 offset:1 lineOffset:sender.tag-10];
-        self.currentIndex = sender.tag-10;
+        [self sliderAnimationWithTag:0 fromIndex:self.config.currentIndex toIndex:sender.tag-10 offset:1 lineOffset:sender.tag-10];
+        self.config.currentIndex = sender.tag-10;
         //        [self sliderAnimationWithTag:sender.tag];
         if (self.delegate) {
             [self.delegate clickWithIndex:sender.tag -10 ];
@@ -259,7 +259,7 @@
     CGFloat scale = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
     int index_s = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
     CGFloat scales = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
-    if (self.currentIndex == index_s && scales>index_s) {
+    if (self.config.currentIndex == index_s && scales>index_s) {
         index_s = index_s+1;
     }
     if (scale-index_ == 0) {
@@ -267,14 +267,21 @@
     }else{
         scale = scale - index_;
     }
-    [self sliderAnimationWithTag:index_+10 fromIndex:self.currentIndex toIndex:index_s offset:scale lineOffset:scrollView.contentOffset.x / NN_SCREEN_WIDTH];
+    [self sliderAnimationWithTag:index_+10 fromIndex:self.config.currentIndex toIndex:index_s offset:scale lineOffset:scrollView.contentOffset.x / NN_SCREEN_WIDTH];
 
+}
+-(LSSTitleSliderConfig*)config{
+    if (!_config) {
+        _config = [LSSTitleSliderConfig new];
+        
+    }
+    return _config;
 }
 //判断是否切换导航条按钮的状态
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     int index_ = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
-    self.currentIndex = index_;
+    self.config.currentIndex = index_;
     if (self.delegate) {
         [self.delegate clickWithIndex:index_];
     }
