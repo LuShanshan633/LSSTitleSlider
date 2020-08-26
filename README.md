@@ -25,7 +25,7 @@
 }
 
 -(NSArray*)childViewControllersWithNavVC:(LSSTitleSliderViewController *)slideVC{
-    return @[];//viewController数组,不想写，自己看demo吧
+    return @[[[UIViewController alloc] init] ,[[UIViewController alloc] init] ,[[UIViewController alloc] init]];
 }
 -(NSArray*)titlesWithNavVC:(LSSTitleSliderVierwController *)slideVC{
     return @[@"11",@"22",@"333"];

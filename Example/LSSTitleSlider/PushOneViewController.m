@@ -41,7 +41,7 @@
     NSLog(@"%ld",(long)index);
 }
 -(NSArray*)childViewControllersWithNavVC:(LSSTitleSlideViewController *)slideVC{
-    return @[[[UIViewController alloc] init] ,[[UIViewController alloc] init] ,[[UIViewController alloc] init]  ];
+    return @[[[UIViewController alloc] init] ,[[UIViewController alloc] init] ,[[UIViewController alloc] init]];
 }
 -(NSArray*)titlesWithNavVC:(LSSTitleSlideViewController *)slideVC{
     return @[@"111",@"222",@"333"];
