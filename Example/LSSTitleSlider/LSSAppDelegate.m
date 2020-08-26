@@ -8,7 +8,7 @@
 
 #import "LSSAppDelegate.h"
 #import "LSSExampleViewController.h"
-#import "LSSNavigationViewController.h"
+#import <LSSTitleSlider/LSSTitleSlider.h>
 
 @implementation LSSAppDelegate
 

@@ -11,6 +11,7 @@
 #endif
 
 #import "LSSNavigationViewController.h"
+#import "LSSTitleSlider.h"
 #import "LSSTitleSlideView.h"
 #import "LSSTitleSlideViewController.h"
 
