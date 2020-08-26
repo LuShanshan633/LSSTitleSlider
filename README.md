@@ -1,29 +1,32 @@
 # LSSTitleSlider
-
-[![CI Status](https://img.shields.io/travis/Lushanshan/LSSTitleSlider.svg?style=flat)](https://travis-ci.org/Lushanshan/LSSTitleSlider)
-[![Version](https://img.shields.io/cocoapods/v/LSSTitleSlider.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
-[![License](https://img.shields.io/cocoapods/l/LSSTitleSlider.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
-[![Platform](https://img.shields.io/cocoapods/p/LSSTitleSlider.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
-## Installation
-
-LSSTitleSlider is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'LSSTitleSlider'
+可使用pod
 ```
+  pod 'LSSTitleSlider'
+```
+# 导航栏滑动标签使用
+### navigationbar不可以隐藏！！！！！
+//继承 LSSTitleSliderViewController(不需要import)
+```
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.dataSource = self;//必要(记得引用delegate和DataSource)
+    self.delegate = self;//可选
 
-## Author
+//其他属性设置参考.h文件
+    self.currentIndex = 1;
+    self.btnWidth = 50;
+    self.slideHeight = 4;
+    self.slideColor = TextThemeColor;
+    self.style = LSSTitlerSlideStyleLeft;//必设置
+    //使带有scrollview的页面拥有侧滑手势，否则会引起手势冲突
+    [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
 
-Lushanshan, gmyuan11@gmail.com
+}
 
-## License
-
-LSSTitleSlider is available under the MIT license. See the LICENSE file for more info.
+-(NSArray*)childViewControllersWithNavVC:(LSSTitleSliderViewController *)slideVC{
+    return @[];//viewController数组,不想写，自己看demo吧
+}
+-(NSArray*)titlesWithNavVC:(LSSTitleSliderVierwController *)slideVC{
+    return @[@"11",@"22",@"333"];
+}
+```
