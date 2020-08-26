@@ -36,10 +36,10 @@
     NSLog(@"%ld",(long)index);
 }
 -(NSArray*)childViewControllersWithNavVC:(LSSTitleSlideViewController *)slideVC{
-    return @[[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init]  ];
+    return @[[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init] ,[[LSSTitleSlideView alloc] init]];
 }
 -(NSArray*)titlesWithNavVC:(LSSTitleSlideViewController *)slideVC{
-    return @[@"首页",@"推荐",@"关注"];
+    return @[@"首页",@"推荐",@"关注",@"关注",@"关注"];
 }
 
 /*

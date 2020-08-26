@@ -29,6 +29,8 @@
     self.config.selectTitleSize = 19;
     self.config.slideHeight = 2;
     self.config.slideWidth = 20;
+    self.config.scrollWidth = NN_SCREEN_WIDTH;
+    self.config.scrollHeight = NN_SCREEN_HEIGHT;
     self.config.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
     self.config.btnWidth = 80;
 
@@ -304,7 +306,7 @@
 
 -(UIScrollView*)scrollView{
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, NN_SCREEN_WIDTH, NN_SCREEN_HEIGHT)];
+        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.config.scrollWidth, self.config.scrollHeight)];
         _scrollView.delegate = self;
         _scrollView.backgroundColor = [UIColor whiteColor];
         _scrollView.pagingEnabled = YES;
@@ -330,35 +332,6 @@
     [self addScrollView];
 
 }
-//-(void)setNormalTitleColor:(UIColor *)normalTitleColor{
-//    _normalTitleColor = normalTitleColor;
-//}
-//-(void)setSelectTitleColor:(UIColor *)selectTitleColor{
-//    _selectTitleColor = selectTitleColor;
-//}
-//- (void)setNormalTitleSize:(CGFloat)normalTitleSize{
-//    _normalTitleSize = normalTitleSize;
-//}
-//- (void)setSelectTitleSize:(CGFloat)selectTitleSize{
-//    _selectTitleSize = selectTitleSize;
-//}
-//- (void)setNormalTitleFontStr:(NSString *)normalTitleFontStr{
-//    _normalTitleFontStr = normalTitleFontStr;
-//}
-//- (void)setSelectTitleFontStr:(NSString *)selectTitleFontStr {
-//    _selectTitleFontStr = selectTitleFontStr;
-//}
-//-(void)setStyle:(LSSTitleSlideStyle)style{
-//    _style = style;
-//
-//
-//}
-//-(void)setSlideColor:(UIColor *)slideColor{
-//    _slideColor = slideColor;
-//}
-//-(void)setSlideHeight:(CGFloat)slideHeight{
-//    _slideHeight = slideHeight;
-//}
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 

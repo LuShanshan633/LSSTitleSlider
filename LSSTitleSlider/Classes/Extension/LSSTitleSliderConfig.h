@@ -65,6 +65,14 @@ NS_ASSUME_NONNULL_BEGIN
  当前默认索引
  */
 @property (assign, nonatomic)NSInteger currentIndex;
+/**
+ 视图高度
+ */
+@property (assign, nonatomic)CGFloat scrollHeight;
+/**
+视图宽度
+*/
+@property (assign, nonatomic)CGFloat scrollWidth;
 
 @end
 
