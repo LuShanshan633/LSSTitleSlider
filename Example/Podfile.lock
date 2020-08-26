@@ -4,7 +4,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - LSSTitleSlider (0.1.1)
+  - LSSTitleSlider (0.1.2)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  LSSTitleSlider: 7d4f5f8890e86c868a2a0d8abb17cfef054aff03
+  LSSTitleSlider: 8a409efbe6cc6ff157f271c24a8b6f7c5cda6fc1
 
 PODFILE CHECKSUM: 878cc8d8f0934f6b52484f2a6fcb2aee31ffa4f6
 
