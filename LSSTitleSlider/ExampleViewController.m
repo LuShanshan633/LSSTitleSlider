@@ -26,6 +26,14 @@
 //    self.selectTitleFont = [UIFont systemFontOfSize:19];
 //    self.slideHeight = 2;
 //    self.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+    self.normalTitleSize = 12;
+    self.selectTitleSize = 20;
+    self.btnWidth = 120;
+    self.slideHeight = 2;
+    self.slideWidth = 60;
+    self.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+    self.selectTitleColor = [UIColor colorWithRed:0/255.0 green:192/255.0 blue:255/255.0 alpha:1];
+    self.slideColor = self.selectTitleColor;
     self.currentIndex = 1;
     self.style = LSSTitleSlideStyleLeft;
     
@@ -40,7 +48,7 @@
     return @[[[ChildViewController alloc] init] ,[[ChildViewController alloc] init] ,[[ChildViewController alloc] init]  ];
 }
 -(NSArray*)titlesWithNavVC:(LSSTitleSlideViewController *)slideVC{
-    return @[@"哈哈哈",@"呵呵呵",@"dd"];
+    return @[@"切尔奇二无",@"企鹅窝若群",@"热情无若群二"];
 }
 /*
 #pragma mark - Navigation

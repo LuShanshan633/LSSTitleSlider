@@ -80,6 +80,10 @@ typedef NS_ENUM(NSInteger, LSSTitleSlideStyle) {
  */
 @property (assign, nonatomic)CGFloat slideHeight;
 /**
+滑块宽度
+*/
+@property (assign, nonatomic)CGFloat slideWidth;
+/**
  按钮宽度
  */
 @property (assign, nonatomic)CGFloat btnWidth;
@@ -93,6 +97,22 @@ typedef NS_ENUM(NSInteger, LSSTitleSlideStyle) {
 
 @property(nonatomic,strong)LSSTitleSlideView * navView;
 @property(nonatomic,strong)UILabel * sliderLabel;
+@property(nonatomic,strong)NSArray * normalColorArrays;
+@property(nonatomic,strong)NSArray * selectedColorArrays;
+@property(nonatomic,strong)NSArray * deltaColorArrays;
+@property (nonatomic, assign) CGFloat deltaScale;
+
+@property (nonatomic, assign) CGFloat deltaNorR;
+
+@property (nonatomic, assign) CGFloat deltaNorG;
+
+@property (nonatomic, assign) CGFloat deltaNorB;
+
+@property (nonatomic, assign) CGFloat deltaSelR;
+
+@property (nonatomic, assign) CGFloat deltaSelG;
+
+@property (nonatomic, assign) CGFloat deltaSelB;
 
 @end
 

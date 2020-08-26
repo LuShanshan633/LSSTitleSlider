@@ -28,6 +28,7 @@
     self.normalTitleSize = 14;
     self.selectTitleSize = 19;
     self.slideHeight = 2;
+    self.slideWidth = 20;
     self.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
     self.btnWidth = 80;
 
@@ -71,12 +72,11 @@
             btn.frame = CGRectMake(self.btnWidth * i+offX, 0, self.btnWidth, 44);
             btn.tag = i+10;
             [btn setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
-            [btn setTitleColor:self.selectTitleColor forState:UIControlStateSelected];
             btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.normalTitleSize];
             if (i == self.currentIndex) {
-                btn.selected = YES;
+                [btn setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
                 btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.selectTitleSize];
-                self.sliderLabel.frame = CGRectMake((self.btnWidth - 16 )/2.0 + offX + self.btnWidth * i, 44-self.slideHeight-3, 16, self.slideHeight);
+                self.sliderLabel.frame = CGRectMake((self.btnWidth - self.slideWidth )/2.0 + offX + self.btnWidth * i, 44-self.slideHeight-3, self.slideWidth, self.slideHeight);
             }
             [self.navView addSubview:btn];
             [btn addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -110,25 +110,24 @@
 #pragma mark - sliderLabel滑动动画
 - (void)sliderAnimationWithTag:(NSInteger)tag fromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex offset:(CGFloat)offset  lineOffset:(CGFloat)lineOffset{
     [UIView animateWithDuration:0.3 animations:^{
-        self.sliderLabel.frame = CGRectMake(self.btnWidth*lineOffset +  (self.btnWidth - 16 )/2.0 + self->offX, self.sliderLabel.frame.origin.y, self.sliderLabel.frame.size.width, self.sliderLabel.frame.size.height);
+        self.sliderLabel.frame = CGRectMake(self.btnWidth*lineOffset +  (self.btnWidth - self.slideWidth )/2.0 + self->offX, self.sliderLabel.frame.origin.y, self.sliderLabel.frame.size.width, self.sliderLabel.frame.size.height);
 
         for (int i = 0; i<self.navView.subviews.count; i++) {
             UIView * obj = self.navView.subviews[i];
             
             if ([obj isKindOfClass:UIButton.class]) {
                 UIButton * btn = (UIButton *)obj;
+                [self setRGBWithProgress:offset];
+
                 if (toIndex > fromIndex) {
+
                     if (btn.tag-10 == toIndex) {
-                        if (offset == 1) {
-                            btn.selected = YES;
-                        }
+                        [btn setTitleColor:[UIColor colorWithRed:self.deltaSelR green:self.deltaSelG blue:self.deltaSelB alpha:1] forState:UIControlStateNormal];
                         btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.normalTitleSize +  (self.selectTitleSize-self.normalTitleSize)*offset];
 
                     }
                     else if (btn.tag-10 == fromIndex){
-                        if (offset == 1) {
-                            btn.selected = NO;
-                        }
+                        [btn setTitleColor:[UIColor colorWithRed:self.deltaNorR green:self.deltaNorG blue:self.deltaNorB alpha:1] forState:UIControlStateNormal];
 
                         btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.selectTitleSize - (self.selectTitleSize-self.normalTitleSize)*offset];
 
@@ -136,15 +135,21 @@
 
                 }else{
                     if (btn.tag-10 == toIndex) {
+
                         if (offset == 1) {
-                            btn.selected = YES;
+                            [btn setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
+                        }else{
+                            [btn setTitleColor:[UIColor colorWithRed:self.deltaNorR green:self.deltaNorG blue:self.deltaNorB alpha:1] forState:UIControlStateNormal];
                         }
-                        
+
                         btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.normalTitleSize +  (self.selectTitleSize-self.normalTitleSize)* (offset !=1?(1-offset):1)];
                     }
                     else if (btn.tag-10 == fromIndex){
                         if (offset == 1) {
-                            btn.selected = NO;
+                            [btn setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
+                        }else{
+                            [btn setTitleColor:[UIColor colorWithRed:self.deltaSelR green:self.deltaSelG blue:self.deltaSelB alpha:1] forState:UIControlStateNormal];
+
                         }
 
                         btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.selectTitleSize -  (self.selectTitleSize-self.normalTitleSize)* (offset !=1?(1-offset):1)];
@@ -177,6 +182,81 @@
     }];
     
 }
+- (NSArray *)getRGBArrayWithColor:(UIColor *)color {
+    CGFloat r = 0, g = 0, b = 0, a = 0;
+    [color getRed:&r green:&g blue:&b alpha:&a];
+    return @[@(r),@(g),@(b)];
+}
+
+- (void)setRGBWithProgress:(CGFloat)progress {
+    _deltaSelR = [self.normalColorArrays[0] floatValue] + [self.deltaColorArrays[0] floatValue] * progress;
+    _deltaSelG = [self.normalColorArrays[1] floatValue] + [self.deltaColorArrays[1] floatValue] * progress;
+    _deltaSelB = [self.normalColorArrays[2] floatValue] + [self.deltaColorArrays[2] floatValue] * progress;
+    _deltaNorR = [self.selectedColorArrays[0] floatValue] - [self.deltaColorArrays[0] floatValue] * progress;
+    _deltaNorG = [self.selectedColorArrays[1] floatValue] - [self.deltaColorArrays[1] floatValue] * progress;
+    _deltaNorB = [self.selectedColorArrays[2] floatValue] - [self.deltaColorArrays[2] floatValue] * progress;
+}
+- (NSArray *)deltaColorArrays {
+    if (!_deltaColorArrays) {
+        NSMutableArray *arrayM = [[NSMutableArray alloc]initWithCapacity:self.normalColorArrays.count];
+        [self.normalColorArrays enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [arrayM addObject: @([self.selectedColorArrays[idx] floatValue] - [obj floatValue])];
+        }];
+        _deltaColorArrays = [arrayM copy];
+    }
+    return _deltaColorArrays;
+}
+
+- (NSArray *)normalColorArrays {
+    if (!_normalColorArrays) {
+        _normalColorArrays = [self getRGBArrayWithColor:self.normalTitleColor];
+    }
+    return _normalColorArrays;
+}
+- (NSArray *)selectedColorArrays {
+    if (!_selectedColorArrays) {
+        _selectedColorArrays = [self getRGBArrayWithColor:self.selectTitleColor];
+    }
+    return _selectedColorArrays;
+}
+
+- (NSArray *)transColorBeginColor:(UIColor *)beginColor andEndColor:(UIColor *)endColor {
+    
+    
+    
+    NSArray<NSNumber *> *beginColorArr = [self getRGBDictionaryByColor:beginColor];
+    NSArray<NSNumber *> *endColorArr = @[@(1.0),@(1.0),@(1.0)];
+    
+    return @[@([endColorArr[0] doubleValue] - [beginColorArr[0] doubleValue]),@([endColorArr[1] doubleValue] - [beginColorArr[1] doubleValue]),@([endColorArr[2] doubleValue] - [beginColorArr[2] doubleValue])];
+    
+}
+- (NSArray *)getRGBDictionaryByColor:(UIColor *)originColor
+{
+    CGFloat r=0,g=0,b=0,a=0;
+    if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
+        [originColor getRed:&r green:&g blue:&b alpha:&a];
+    }
+    else {
+        const CGFloat *components = CGColorGetComponents(originColor.CGColor);
+        r = components[0];
+        g = components[1];
+        b = components[2];
+        a = components[3];
+    }
+    
+    return @[@(r),@(g),@(b)];
+}
+
+- (UIColor *)getColorWithColor:(UIColor *)beginColor andCoe:(double)coe andEndColor:(UIColor *)endColor {
+    NSArray *beginColorArr = [self getRGBDictionaryByColor:beginColor];
+    NSArray *marginArray = [self transColorBeginColor:beginColor andEndColor:endColor];
+
+    double red = [beginColorArr[0] doubleValue] + coe * [marginArray[0] doubleValue];
+    double green = [beginColorArr[1] doubleValue]+ coe * [marginArray[1] doubleValue];
+    double blue = [beginColorArr[2] doubleValue] + coe * [marginArray[2] doubleValue];
+    return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1];
+    
+}
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     int index_ = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
     CGFloat scale = scrollView.contentOffset.x / NN_SCREEN_WIDTH;
@@ -200,6 +280,21 @@
     self.currentIndex = index_;
     if (self.delegate) {
         [self.delegate clickWithIndex:index_];
+    }
+    for (int i = 0; i<self.navView.subviews.count; i++) {
+        UIView * obj = self.navView.subviews[i];
+        
+        if ([obj isKindOfClass:UIButton.class]) {
+            UIButton * btn = (UIButton *)obj;
+            if (btn.tag == index_+10) {
+                [btn setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
+                btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.selectTitleSize];
+            }else{
+                [btn setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
+                btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.normalTitleSize];
+
+            }
+        }
     }
 }
 
