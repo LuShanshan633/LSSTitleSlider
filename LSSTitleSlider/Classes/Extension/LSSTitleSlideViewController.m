@@ -21,16 +21,16 @@
 @implementation LSSTitleSlideViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    self.selectTitleColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
-    self.normalTitleFontStr = @"PingFangSC-Regular";
-    self.selectTitleFontStr = @"PingFangSC-Regular";
-    self.normalTitleSize = 14;
-    self.selectTitleSize = 19;
-    self.slideHeight = 2;
-    self.slideWidth = 20;
-    self.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
-    self.btnWidth = 80;
+    self.config.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+    self.config.selectTitleColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+    self.config.normalTitleFontStr = @"PingFangSC-Regular";
+    self.config.selectTitleFontStr = @"PingFangSC-Regular";
+    self.config.normalTitleSize = 14;
+    self.config.selectTitleSize = 19;
+    self.config.slideHeight = 2;
+    self.config.slideWidth = 20;
+    self.config.slideColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+    self.config.btnWidth = 80;
 
     // Do any additional setup after loading the view.
 }
@@ -39,7 +39,7 @@
         NSArray * titles = [self.dataSource titlesWithNavVC:self];
         self.navView.frame = CGRectMake(0, 0, NN_SCREEN_WIDTH-80, 44);
 
-        if (self.style == LSSTitleSlideStyleCenter) {
+        if (self.config.style == LSSTitleSlideStyleCenter) {
             UIButton * backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 20)];
             [backBtn setTitle:@"返回" forState:UIControlStateNormal];
             [backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -59,24 +59,24 @@
 
         }
         
-        offX = self.style == LSSTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 120 - titles.count * self.btnWidth)/2.0 : 0;
+        offX = self.config.style == LSSTitleSlideStyleCenter ? (NN_SCREEN_WIDTH - 120 - titles.count * self.config.btnWidth)/2.0 : 0;
         
-        self.sliderLabel.backgroundColor = self.slideColor;
+        self.sliderLabel.backgroundColor = self.config.slideColor;
         self.sliderLabel.layer.masksToBounds = YES;
-        self.sliderLabel.layer.cornerRadius = self.slideHeight/2.0;
+        self.sliderLabel.layer.cornerRadius = self.config.slideHeight/2.0;
         
         [self.navView addSubview: self.sliderLabel];
         for (int i = 0; i < titles.count; i++) {
             UIButton * btn = [[UIButton alloc]init];
             [btn setTitle:titles[i] forState:UIControlStateNormal];
-            btn.frame = CGRectMake(self.btnWidth * i+offX, 0, self.btnWidth, 44);
+            btn.frame = CGRectMake(self.config.btnWidth * i+offX, 0, self.config.btnWidth, 44);
             btn.tag = i+10;
-            [btn setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.normalTitleSize];
+            [btn setTitleColor:self.config.normalTitleColor forState:UIControlStateNormal];
+            btn.titleLabel.font = [UIFont fontWithName:self.config.normalTitleFontStr size:self.config.normalTitleSize];
             if (i == self.currentIndex) {
-                [btn setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
-                btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.selectTitleSize];
-                self.sliderLabel.frame = CGRectMake((self.btnWidth - self.slideWidth )/2.0 + offX + self.btnWidth * i, 44-self.slideHeight-3, self.slideWidth, self.slideHeight);
+                [btn setTitleColor:self.config.selectTitleColor forState:UIControlStateNormal];
+                btn.titleLabel.font = [UIFont fontWithName:self.config.selectTitleFontStr size:self.config.selectTitleSize];
+                self.sliderLabel.frame = CGRectMake((self.config.btnWidth - self.config.slideWidth )/2.0 + offX + self.config.btnWidth * i, 44-self.config.slideHeight-3, self.config.slideWidth, self.config.slideHeight);
             }
             [self.navView addSubview:btn];
             [btn addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -93,10 +93,7 @@
         NSArray * vcs = [self.dataSource childViewControllersWithNavVC:self];
         for (int i = 0; i < vcs.count; i++){
             //添加背景，把三个VC的view贴到mainScrollView上面
-            UIView *pageView = [[UIView alloc]initWithFrame:CGRectMake(NN_SCREEN_WIDTH * i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
-            UIViewController * vc = vcs[i];
-            [self addChildViewController:vc];
-            [pageView addSubview:vc.view];
+            LSSTitleSlideView *pageView = [[LSSTitleSlideView alloc]initWithFrame:CGRectMake(NN_SCREEN_WIDTH * i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
             [self.scrollView addSubview:pageView];
         }
         self.scrollView.contentSize = CGSizeMake(NN_SCREEN_WIDTH * (vcs.count), 0);
@@ -110,7 +107,7 @@
 #pragma mark - sliderLabel滑动动画
 - (void)sliderAnimationWithTag:(NSInteger)tag fromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex offset:(CGFloat)offset  lineOffset:(CGFloat)lineOffset{
     [UIView animateWithDuration:0.3 animations:^{
-        self.sliderLabel.frame = CGRectMake(self.btnWidth*lineOffset +  (self.btnWidth - self.slideWidth )/2.0 + self->offX, self.sliderLabel.frame.origin.y, self.sliderLabel.frame.size.width, self.sliderLabel.frame.size.height);
+        self.sliderLabel.frame = CGRectMake(self.config.btnWidth*lineOffset +  (self.config.btnWidth - self.config.slideWidth )/2.0 + self->offX, self.sliderLabel.frame.origin.y, self.sliderLabel.frame.size.width, self.sliderLabel.frame.size.height);
 
         for (int i = 0; i<self.navView.subviews.count; i++) {
             UIView * obj = self.navView.subviews[i];
@@ -123,13 +120,13 @@
 
                     if (btn.tag-10 == toIndex) {
                         [btn setTitleColor:[UIColor colorWithRed:self.deltaSelR green:self.deltaSelG blue:self.deltaSelB alpha:1] forState:UIControlStateNormal];
-                        btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.normalTitleSize +  (self.selectTitleSize-self.normalTitleSize)*offset];
+                        btn.titleLabel.font = [UIFont fontWithName:self.config.selectTitleFontStr size:self.config.normalTitleSize +  (self.config.selectTitleSize-self.config.normalTitleSize)*offset];
 
                     }
                     else if (btn.tag-10 == fromIndex){
                         [btn setTitleColor:[UIColor colorWithRed:self.deltaNorR green:self.deltaNorG blue:self.deltaNorB alpha:1] forState:UIControlStateNormal];
 
-                        btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.selectTitleSize - (self.selectTitleSize-self.normalTitleSize)*offset];
+                        btn.titleLabel.font = [UIFont fontWithName:self.config.normalTitleFontStr size:self.config.selectTitleSize - (self.config.selectTitleSize-self.config.normalTitleSize)*offset];
 
                     }
 
@@ -137,22 +134,22 @@
                     if (btn.tag-10 == toIndex) {
 
                         if (offset == 1) {
-                            [btn setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
+                            [btn setTitleColor:self.config.selectTitleColor forState:UIControlStateNormal];
                         }else{
                             [btn setTitleColor:[UIColor colorWithRed:self.deltaNorR green:self.deltaNorG blue:self.deltaNorB alpha:1] forState:UIControlStateNormal];
                         }
 
-                        btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.normalTitleSize +  (self.selectTitleSize-self.normalTitleSize)* (offset !=1?(1-offset):1)];
+                        btn.titleLabel.font = [UIFont fontWithName:self.config.normalTitleFontStr size:self.config.normalTitleSize +  (self.config.selectTitleSize-self.config.normalTitleSize)* (offset !=1?(1-offset):1)];
                     }
                     else if (btn.tag-10 == fromIndex){
                         if (offset == 1) {
-                            [btn setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
+                            [btn setTitleColor:self.config.normalTitleColor forState:UIControlStateNormal];
                         }else{
                             [btn setTitleColor:[UIColor colorWithRed:self.deltaSelR green:self.deltaSelG blue:self.deltaSelB alpha:1] forState:UIControlStateNormal];
 
                         }
 
-                        btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.selectTitleSize -  (self.selectTitleSize-self.normalTitleSize)* (offset !=1?(1-offset):1)];
+                        btn.titleLabel.font = [UIFont fontWithName:self.config.selectTitleFontStr size:self.config.selectTitleSize -  (self.config.selectTitleSize-self.config.normalTitleSize)* (offset !=1?(1-offset):1)];
 
                     }
 
@@ -209,13 +206,13 @@
 
 - (NSArray *)normalColorArrays {
     if (!_normalColorArrays) {
-        _normalColorArrays = [self getRGBArrayWithColor:self.normalTitleColor];
+        _normalColorArrays = [self getRGBArrayWithColor:self.config.normalTitleColor];
     }
     return _normalColorArrays;
 }
 - (NSArray *)selectedColorArrays {
     if (!_selectedColorArrays) {
-        _selectedColorArrays = [self getRGBArrayWithColor:self.selectTitleColor];
+        _selectedColorArrays = [self getRGBArrayWithColor:self.config.selectTitleColor];
     }
     return _selectedColorArrays;
 }
@@ -287,11 +284,11 @@
         if ([obj isKindOfClass:UIButton.class]) {
             UIButton * btn = (UIButton *)obj;
             if (btn.tag == index_+10) {
-                [btn setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
-                btn.titleLabel.font = [UIFont fontWithName:self.selectTitleFontStr size:self.selectTitleSize];
+                [btn setTitleColor:self.config.selectTitleColor forState:UIControlStateNormal];
+                btn.titleLabel.font = [UIFont fontWithName:self.config.selectTitleFontStr size:self.config.selectTitleSize];
             }else{
-                [btn setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
-                btn.titleLabel.font = [UIFont fontWithName:self.normalTitleFontStr size:self.normalTitleSize];
+                [btn setTitleColor:self.config.normalTitleColor forState:UIControlStateNormal];
+                btn.titleLabel.font = [UIFont fontWithName:self.config.normalTitleFontStr size:self.config.normalTitleSize];
 
             }
         }
@@ -321,37 +318,40 @@
     }
     return _navView;
 }
--(void)setNormalTitleColor:(UIColor *)normalTitleColor{
-    _normalTitleColor = normalTitleColor;
-}
--(void)setSelectTitleColor:(UIColor *)selectTitleColor{
-    _selectTitleColor = selectTitleColor;
-}
-- (void)setNormalTitleSize:(CGFloat)normalTitleSize{
-    _normalTitleSize = normalTitleSize;
-}
-- (void)setSelectTitleSize:(CGFloat)selectTitleSize{
-    _selectTitleSize = selectTitleSize;
-}
-- (void)setNormalTitleFontStr:(NSString *)normalTitleFontStr{
-    _normalTitleFontStr = normalTitleFontStr;
-}
-- (void)setSelectTitleFontStr:(NSString *)selectTitleFontStr {
-    _selectTitleFontStr = selectTitleFontStr;
-}
--(void)setStyle:(LSSTitleSlideStyle)style{
-    _style = style;
-
+-(void)loadNavSliderView{
     [self addTopView];
     [self addScrollView];
 
 }
--(void)setSlideColor:(UIColor *)slideColor{
-    _slideColor = slideColor;
-}
--(void)setSlideHeight:(CGFloat)slideHeight{
-    _slideHeight = slideHeight;
-}
+//-(void)setNormalTitleColor:(UIColor *)normalTitleColor{
+//    _normalTitleColor = normalTitleColor;
+//}
+//-(void)setSelectTitleColor:(UIColor *)selectTitleColor{
+//    _selectTitleColor = selectTitleColor;
+//}
+//- (void)setNormalTitleSize:(CGFloat)normalTitleSize{
+//    _normalTitleSize = normalTitleSize;
+//}
+//- (void)setSelectTitleSize:(CGFloat)selectTitleSize{
+//    _selectTitleSize = selectTitleSize;
+//}
+//- (void)setNormalTitleFontStr:(NSString *)normalTitleFontStr{
+//    _normalTitleFontStr = normalTitleFontStr;
+//}
+//- (void)setSelectTitleFontStr:(NSString *)selectTitleFontStr {
+//    _selectTitleFontStr = selectTitleFontStr;
+//}
+//-(void)setStyle:(LSSTitleSlideStyle)style{
+//    _style = style;
+//
+//
+//}
+//-(void)setSlideColor:(UIColor *)slideColor{
+//    _slideColor = slideColor;
+//}
+//-(void)setSlideHeight:(CGFloat)slideHeight{
+//    _slideHeight = slideHeight;
+//}
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 

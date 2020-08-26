@@ -17,6 +17,8 @@
 		30A9378D678BE58EDEA25CD3758AE5D0 /* LSSNavigationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E0A8D46454122D5264B0A0FE63AB580 /* LSSNavigationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38546CFCB9570B8CC5BC474AD8257C6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
 		40039E0AF0D764360B1D4FC4F7950D2E /* UIApplication+StrictKeyWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 99A67367E018411D614EC8536A8A1C5B /* UIApplication+StrictKeyWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4543964124F63AD500DDD2CD /* LSSTitleSliderConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 4543963F24F63AD500DDD2CD /* LSSTitleSliderConfig.h */; };
+		4543964324F63AE200DDD2CD /* LSSTitleSliderConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4543964024F63AD500DDD2CD /* LSSTitleSliderConfig.m */; };
 		459A2749EF630DDD33C9336D2F493524 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
 		6AE239C5D116E1C06F5705699FB9EAF0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E601BD54DA9BF4071437E60125281FA /* XCTest.framework */; };
 		6DBC8EB7532E931C2FBDA71D1E0B66A4 /* FBSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA6E655DC84D06359BD0ED5E36C783 /* FBSnapshotTestCase-dummy.m */; };
@@ -74,7 +76,7 @@
 		0A4F7C8C62F6C6071F6888E0EDEAAB8A /* Pods-LSSTitleSlider_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LSSTitleSlider_Tests-dummy.m"; sourceTree = "<group>"; };
 		0C9C654F46309C297FEA69B40840D02E /* Pods-LSSTitleSlider_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LSSTitleSlider_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		0F538C426803AE34255FC6E35B408CCA /* UIApplication+StrictKeyWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+StrictKeyWindow.m"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.m"; sourceTree = "<group>"; };
-		11628D2931F83D50DA98B1694502F503 /* LSSTitleSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LSSTitleSlider.framework; path = LSSTitleSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11628D2931F83D50DA98B1694502F503 /* LSSTitleSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LSSTitleSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ADA6E655DC84D06359BD0ED5E36C783 /* FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
 		1D73FF9C1B9D26FACEDBE941376727DB /* LSSTitleSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSSTitleSlider.h; path = LSSTitleSlider/Classes/Extension/LSSTitleSlider.h; sourceTree = "<group>"; };
 		1FC623913BFC22C53B385CFD5E640F15 /* Pods-LSSTitleSlider_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LSSTitleSlider_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -84,15 +86,17 @@
 		277B6BE10C665F515606A22FD60C6DCC /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
 		284833D18C244D2B42966B6EE425AA59 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
 		2DC50BFAB8044AD9CF46F8A971625024 /* LSSTitleSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LSSTitleSlider-prefix.pch"; sourceTree = "<group>"; };
-		343DCC018C874C012BDBA91ED341B8AD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		343DCC018C874C012BDBA91ED341B8AD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		38A4DCED2579D1A7A6CA58588696BED3 /* Pods-LSSTitleSlider_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LSSTitleSlider_Tests-umbrella.h"; sourceTree = "<group>"; };
 		3F0D66CF296ABBC57EC4D0452397E235 /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = FBSnapshotTestCase/SwiftSupport.swift; sourceTree = "<group>"; };
-		3F13702CFC4DD6259E27396FF9EFF70D /* Pods_LSSTitleSlider_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LSSTitleSlider_Example.framework; path = "Pods-LSSTitleSlider_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F13702CFC4DD6259E27396FF9EFF70D /* Pods_LSSTitleSlider_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSSTitleSlider_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4543963F24F63AD500DDD2CD /* LSSTitleSliderConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LSSTitleSliderConfig.h; path = LSSTitleSlider/Classes/Extension/LSSTitleSliderConfig.h; sourceTree = "<group>"; };
+		4543964024F63AD500DDD2CD /* LSSTitleSliderConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LSSTitleSliderConfig.m; path = LSSTitleSlider/Classes/Extension/LSSTitleSliderConfig.m; sourceTree = "<group>"; };
 		4568279DE47DC3AB91598E1317503995 /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		463A78EA60538D2A3E1F18D2069EE0C7 /* Pods-LSSTitleSlider_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LSSTitleSlider_Example-umbrella.h"; sourceTree = "<group>"; };
 		4C6513B09838318BD763CFD5390D1DE0 /* FBSnapshotTestCase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.release.xcconfig; sourceTree = "<group>"; };
 		4C7E65C4B8E2435E110AEA7388ABEA80 /* LSSTitleSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LSSTitleSlider.modulemap; sourceTree = "<group>"; };
-		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E601BD54DA9BF4071437E60125281FA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		64F9C6B878333CBA4E588623E5B9DACF /* LSSTitleSlideView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSSTitleSlideView.h; path = LSSTitleSlider/Classes/Extension/LSSTitleSlideView.h; sourceTree = "<group>"; };
 		656116C8FA5458F45D4707110C9530EC /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
@@ -112,12 +116,12 @@
 		98BD25A3BD17A3D247572FF4D22FB670 /* LSSTitleSlideView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LSSTitleSlideView.m; path = LSSTitleSlider/Classes/Extension/LSSTitleSlideView.m; sourceTree = "<group>"; };
 		99A67367E018411D614EC8536A8A1C5B /* UIApplication+StrictKeyWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+StrictKeyWindow.h"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.h"; sourceTree = "<group>"; };
 		9CA4BFC99B3E9E1263786BBBFAB0714D /* LSSTitleSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LSSTitleSlider-dummy.m"; sourceTree = "<group>"; };
-		9CEC202436E4FC78984FABDAC2F2210B /* Pods_LSSTitleSlider_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LSSTitleSlider_Tests.framework; path = "Pods-LSSTitleSlider_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9CEC202436E4FC78984FABDAC2F2210B /* Pods_LSSTitleSlider_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LSSTitleSlider_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E0A8D46454122D5264B0A0FE63AB580 /* LSSNavigationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSSNavigationViewController.h; path = LSSTitleSlider/Classes/Extension/LSSNavigationViewController.h; sourceTree = "<group>"; };
 		A943FB54DD31F6D427C3EAAAD0A43F8D /* Pods-LSSTitleSlider_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LSSTitleSlider_Example-frameworks.sh"; sourceTree = "<group>"; };
 		AE9FF9459FBCDC4AF88FB6B5A4CC1439 /* FBSnapshotTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestController.h; path = FBSnapshotTestCase/FBSnapshotTestController.h; sourceTree = "<group>"; };
-		B056012A8364AAEB938592D65FC96360 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		B056012A8364AAEB938592D65FC96360 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B7103CA00AED20722C5B69CA5B4F6938 /* FBSnapshotTestCase-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FBSnapshotTestCase-Info.plist"; sourceTree = "<group>"; };
 		C0197581B9C60391DECACF394016561A /* Pods-LSSTitleSlider_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LSSTitleSlider_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C24E8E52E7D5E49F8B0E2E935C23EAE1 /* LSSTitleSlider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LSSTitleSlider.debug.xcconfig; sourceTree = "<group>"; };
@@ -131,7 +135,7 @@
 		DE36F7633722B275A8ED240087307365 /* Pods-LSSTitleSlider_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LSSTitleSlider_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		DEB253185937CD0244DCD6AF8DEDB604 /* LSSTitleSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LSSTitleSlider-umbrella.h"; sourceTree = "<group>"; };
 		E2C9088F62249F550192892D28476F72 /* LSSTitleSlideViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSSTitleSlideViewController.h; path = LSSTitleSlider/Classes/Extension/LSSTitleSlideViewController.h; sourceTree = "<group>"; };
-		F35F9B2DE30BB55A4665D733FF0A5C3A /* LSSTitleSlider.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = LSSTitleSlider.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F35F9B2DE30BB55A4665D733FF0A5C3A /* LSSTitleSlider.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = LSSTitleSlider.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F589A6E56DBAE7E8F9EDF0418F55926B /* Pods-LSSTitleSlider_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LSSTitleSlider_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		F5CB21B6869500F4704DBA95E7FAA1FF /* Pods-LSSTitleSlider_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LSSTitleSlider_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FC615C7F1C22ED65CAB3B96F0EAC6D31 /* LSSTitleSlider-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LSSTitleSlider-Info.plist"; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				98BD25A3BD17A3D247572FF4D22FB670 /* LSSTitleSlideView.m */,
 				E2C9088F62249F550192892D28476F72 /* LSSTitleSlideViewController.h */,
 				C66C891A07D2B331266FF9BB097D56E1 /* LSSTitleSlideViewController.m */,
+				4543963F24F63AD500DDD2CD /* LSSTitleSliderConfig.h */,
+				4543964024F63AD500DDD2CD /* LSSTitleSliderConfig.m */,
 				4F7E507E69EAD56B82C9B408A3D5E811 /* Pod */,
 				F824EFEB17A93F58324AF0CD2C808A3A /* Support Files */,
 			);
@@ -329,7 +335,6 @@
 				B69B2ECE2D2C9A3924A9231138CE0BBC /* Support Files */,
 				906402ECC4C6C5EB58DD365FD2C64E92 /* SwiftSupport */,
 			);
-			name = FBSnapshotTestCase;
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
@@ -385,6 +390,7 @@
 			files = (
 				F720FAF13A108CE6901E0A8B0580E1E8 /* FBSnapshotTestCase-umbrella.h in Headers */,
 				00224C929D57F45B70E87359E719948D /* FBSnapshotTestCase.h in Headers */,
+				4543964124F63AD500DDD2CD /* LSSTitleSliderConfig.h in Headers */,
 				C49D52712466511E332C952834C81FE1 /* FBSnapshotTestCasePlatform.h in Headers */,
 				90142C6259374E18E640396A59AD379A /* FBSnapshotTestController.h in Headers */,
 				40039E0AF0D764360B1D4FC4F7950D2E /* UIApplication+StrictKeyWindow.h in Headers */,
@@ -586,6 +592,7 @@
 				D434A1197A9915463F78D756E30862A1 /* LSSTitleSlider-dummy.m in Sources */,
 				8E453B1AF2964448E3AFD4C349B7D537 /* LSSTitleSlideView.m in Sources */,
 				148D1E0F1701387DDCBFA519F39AC8D2 /* LSSTitleSlideViewController.m in Sources */,
+				4543964324F63AE200DDD2CD /* LSSTitleSliderConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,8 +952,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

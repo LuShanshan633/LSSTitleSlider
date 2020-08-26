@@ -7,7 +7,7 @@
 //
 
 #import "LSSViewController.h"
-
+#import <LSSTitleSlider/LSSTitleSlider.h>
 @interface LSSViewController ()
 
 @end

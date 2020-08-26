@@ -8,13 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LSSTitleSlideView.h"
+#import "LSSTitleSliderConfig.h"
 NS_ASSUME_NONNULL_BEGIN
-typedef NS_ENUM(NSInteger, LSSTitleSlideStyle) {
-    LSSTitleSlideStyleCenter,
-    LSSTitleSlideStyleLeft,
-    LSSTitleSlideStyleRight
-};
-
 
 @class LSSTitleSlideViewController;
 // 声明数据源协议
@@ -42,51 +37,53 @@ typedef NS_ENUM(NSInteger, LSSTitleSlideStyle) {
 // 设置代理及数据源属性
 @property (strong, nonatomic)id <LSSTitleSlideViewControllerDelegate>  delegate;
 @property (strong, nonatomic)id <LSSTitleSlideViewControllerDataSource> dataSource;
-/**
- 设置标签位置
- */
-@property (assign, nonatomic)LSSTitleSlideStyle style;
-/**
- 未选中状态文字颜色
- */
-@property (strong, nonatomic)UIColor * normalTitleColor;
-/**
- 选中状态文字颜色
- */
-@property (strong, nonatomic)UIColor * selectTitleColor;
-/**
-未选中状态文字字体
-*/
-@property (strong, nonatomic)NSString * normalTitleFontStr;
-/**
-选中状态文字字体
-*/
-@property (strong, nonatomic)NSString * selectTitleFontStr;
+@property (strong, nonatomic)LSSTitleSliderConfig * config;
 
-/**
-选中状态文字大小
-*/
-@property (assign, nonatomic)CGFloat selectTitleSize;
-/**
-未选中状态文字大小
-*/
-@property (assign, nonatomic)CGFloat normalTitleSize;
-/**
- 滑块颜色
- */
-@property (strong, nonatomic)UIColor * slideColor;
-/**
- 滑块高度
- */
-@property (assign, nonatomic)CGFloat slideHeight;
-/**
-滑块宽度
-*/
-@property (assign, nonatomic)CGFloat slideWidth;
-/**
- 按钮宽度
- */
-@property (assign, nonatomic)CGFloat btnWidth;
+///**
+// 设置标签位置
+// */
+//@property (assign, nonatomic)LSSTitleSlideStyle style;
+///**
+// 未选中状态文字颜色
+// */
+//@property (strong, nonatomic)UIColor * normalTitleColor;
+///**
+// 选中状态文字颜色
+// */
+//@property (strong, nonatomic)UIColor * selectTitleColor;
+///**
+//未选中状态文字字体
+//*/
+//@property (strong, nonatomic)NSString * normalTitleFontStr;
+///**
+//选中状态文字字体
+//*/
+//@property (strong, nonatomic)NSString * selectTitleFontStr;
+//
+///**
+//选中状态文字大小
+//*/
+//@property (assign, nonatomic)CGFloat selectTitleSize;
+///**
+//未选中状态文字大小
+//*/
+//@property (assign, nonatomic)CGFloat normalTitleSize;
+///**
+// 滑块颜色
+// */
+//@property (strong, nonatomic)UIColor * slideColor;
+///**
+// 滑块高度
+// */
+//@property (assign, nonatomic)CGFloat slideHeight;
+///**
+//滑块宽度
+//*/
+//@property (assign, nonatomic)CGFloat slideWidth;
+///**
+// 按钮宽度
+// */
+//@property (assign, nonatomic)CGFloat btnWidth;
 
 /**
  当前默认索引
