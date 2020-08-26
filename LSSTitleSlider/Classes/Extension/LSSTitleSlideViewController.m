@@ -273,6 +273,11 @@
     [self sliderAnimationWithTag:index_+10 fromIndex:self.config.currentIndex toIndex:index_s offset:scale lineOffset:scrollView.contentOffset.x / self.config.scrollWidth];
 
 }
+-(void)setCurrentIndex:(NSInteger)currentIndex{
+    _currentIndex = currentIndex;
+    self.scrollView.contentOffset = CGPointMake(self.config.scrollWidth * self.currentIndex, 0);
+    self.config.currentIndex = currentIndex;
+}
 -(LSSTitleSliderConfig*)config{
     if (!_config) {
         _config = [LSSTitleSliderConfig new];
@@ -329,8 +334,8 @@
     return _navView;
 }
 -(void)loadNavSliderView{
-    [self addTopView];
     [self addScrollView];
+    [self addTopView];
 
 }
 -(void)viewWillDisappear:(BOOL)animated{

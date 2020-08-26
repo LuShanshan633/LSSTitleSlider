@@ -26,12 +26,15 @@
     self.config.normalTitleColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
     self.config.selectTitleColor = [UIColor colorWithRed:0/255.0 green:192/255.0 blue:255/255.0 alpha:1];
     self.config.slideColor = self.config.selectTitleColor;
-    self.config.currentIndex = 1;
     self.config.scrollHeight = 200;
+    self.config.scrollWidth = 200;//目前鸡肋，目前只适用宽度为手机屏幕
     self.config.style = LSSTitleSlideStyleLeft;
     self.view.backgroundColor = [UIColor greenColor];
     //UI布局
     [self loadNavSliderView];
+    //最后设置当前页面
+    self.currentIndex = 1;
+
     self.scrollView.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }
@@ -39,11 +42,16 @@
     NSLog(@"%ld",(long)index);
 }
 -(NSArray*)childViewControllersWithNavVC:(LSSTitleSlideViewController *)slideVC{
-    LSSTitleSlideView * one = [[LSSTitleSlideView alloc]init];
-    one.backgroundColor = [UIColor purpleColor];
+    return @[[self setupUIWithIndex:0],[self setupUIWithIndex:1],[self setupUIWithIndex:2],[self setupUIWithIndex:3],[self setupUIWithIndex:4]];
+}
+-(LSSTitleSlideView*)setupUIWithIndex:(NSInteger)index{
     LSSTitleSlideView * two = [[LSSTitleSlideView alloc]init];
-    one.backgroundColor = [UIColor yellowColor];
-    return @[one ,two ,one ,one ,[[LSSTitleSlideView alloc] init]];
+    two.backgroundColor = [UIColor yellowColor];
+    UILabel * lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+    lb.text = [NSString stringWithFormat:@"第%d个",index];
+    [two addSubview:lb];
+    return two;
+
 }
 -(NSArray*)titlesWithNavVC:(LSSTitleSlideViewController *)slideVC{
     return @[@"首页",@"推荐",@"关注",@"关注",@"关注"];

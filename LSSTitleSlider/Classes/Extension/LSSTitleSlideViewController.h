@@ -106,6 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat deltaSelG;
 
 @property (nonatomic, assign) CGFloat deltaSelB;
+@property (assign, nonatomic)NSInteger currentIndex;
 
 @end
 
