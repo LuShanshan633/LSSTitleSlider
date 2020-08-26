@@ -28,7 +28,8 @@
     self.config.slideColor = self.config.selectTitleColor;
     self.config.currentIndex = 1;
     self.config.style = LSSTitleSlideStyleLeft;
-
+    //UI布局
+    [self loadNavSliderView];
     // Do any additional setup after loading the view.
 }
 -(void)clickWithIndex:(NSInteger)index{
