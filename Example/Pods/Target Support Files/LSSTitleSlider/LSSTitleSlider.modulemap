@@ -1,0 +1,6 @@
+framework module LSSTitleSlider {
+  umbrella header "LSSTitleSlider-umbrella.h"
+
+  export *
+  module * { export * }
+}

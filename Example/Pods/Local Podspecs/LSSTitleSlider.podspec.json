@@ -1,0 +1,22 @@
+{
+  "name": "LSSTitleSlider",
+  "version": "0.1.0",
+  "summary": "A short description of LSSTitleSlider.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Lushanshan/LSSTitleSlider",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Lushanshan": "gmyuan11@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Lushanshan/LSSTitleSlider.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LSSTitleSlider/Classes/**/*"
+}
