@@ -48,21 +48,6 @@
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    for (UIView *view in self.navigationController.navigationBar.subviews) {
-        //            if ([NSStringFromClass([view class]) containsString:@"ContentView"]) {
-        //                for (UIView *views in view.subviews) {
-        //                    if ([views isKindOfClass:[LSSTitleSlideView class]]) {
-        //                        [views removeFromSuperview];
-        //                    }
-        //                }
-        //
-        //            }
-        if ([view isKindOfClass:[LSSTitleSlideView class]]) {
-            [view removeFromSuperview];
-        }
-        
-    }
-
 }
 
 /*

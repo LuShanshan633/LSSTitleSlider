@@ -4,8 +4,7 @@ platform :ios, '10.0'
 source 'https://github.com/LuShanshan633/LSSTitleSliderSpecs.git'
 
 target 'LSSTitleSlider_Example' do
- #pod 'LSSTitleSlider', :path => '../'
-pod 'LSSTitleSlider'
+ pod 'LSSTitleSlider', :path => '../'
   target 'LSSTitleSlider_Tests' do
     inherit! :search_paths
 
