@@ -4,24 +4,22 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - LSSTitleSlider (0.1.0)
+  - LSSTitleSlider (0.1.1)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
-  - LSSTitleSlider (from `../`)
+  - LSSTitleSlider
 
 SPEC REPOS:
+  https://github.com/LuShanshan633/LSSTitleSliderSpecs.git:
+    - LSSTitleSlider
   trunk:
     - FBSnapshotTestCase
 
-EXTERNAL SOURCES:
-  LSSTitleSlider:
-    :path: "../"
-
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  LSSTitleSlider: 7dba524087e3a6255fea52b9ea34b940f2fcac03
+  LSSTitleSlider: 267f75d71e877b26bc04f30befcd49b6a10832ce
 
-PODFILE CHECKSUM: 9f870b001c594c2a07e5a7b59f1c53f15e49d135
+PODFILE CHECKSUM: 226f5a25cdcf5229a38781fdaf5d2c6a695371ab
 
 COCOAPODS: 1.9.3

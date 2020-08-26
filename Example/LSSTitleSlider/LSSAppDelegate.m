@@ -7,12 +7,17 @@
 //
 
 #import "LSSAppDelegate.h"
+#import "LSSExampleViewController.h"
+#import "LSSNavigationViewController.h"
 
 @implementation LSSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    UINavigationController * nav = [[LSSNavigationViewController alloc]initWithRootViewController:[[LSSExampleViewController alloc]init]];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
