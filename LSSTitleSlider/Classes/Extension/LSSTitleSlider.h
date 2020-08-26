@@ -7,6 +7,8 @@
 
 #ifndef LSSTitleSlider_h
 #define LSSTitleSlider_h
+#import <LSSTitleSlider/LSSNavigationViewController.h>
+#import <LSSTitleSlider/LSSTitleSlideViewController.h>
 
 
 #endif /* LSSTitleSlider_h */
