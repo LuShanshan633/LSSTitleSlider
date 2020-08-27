@@ -1,7 +1,7 @@
 use_frameworks!
 
 platform :ios, '10.0'
-source 'https://github.com/LuShanshan633/LSSTitleSliderSpecs.git'
+source 'https://github.com/LuShanshan633/LSSSpecs.git'
 
 target 'LSSTitleSlider_Example' do
  pod 'LSSTitleSlider', :path => '../'
