@@ -2,9 +2,9 @@
 # LSSTitleSlider
 
 [![CI Status](https://img.shields.io/travis/LuShanshan633/LSSTitleSlider.svg?style=flat)](https://travis-ci.org/LuShanshan633/LSSTitleSlider)
-[![Version](https://img.shields.io/cocoapods/v/LSSWarToAmr.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
-[![License](https://img.shields.io/cocoapods/l/LSSWarToAmr.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
-[![Platform](https://img.shields.io/cocoapods/p/LSSWarToAmr.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
+[![Version](https://img.shields.io/cocoapods/v/LSSTitleSlider.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
+[![License](https://img.shields.io/cocoapods/l/LSSTitleSlider.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
+[![Platform](https://img.shields.io/cocoapods/p/LSSTitleSlider.svg?style=flat)](https://cocoapods.org/pods/LSSTitleSlider)
 
 ## Example
 ### //继承 LSSTitleSliderViewController(不需要import)
