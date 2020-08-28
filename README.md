@@ -29,5 +29,3 @@ LuShanshan633
 ## License
 
 LSSTitleSlider is available under the MIT license. See the LICENSE file for more info.
-
-# LSSTitleSlider导航栏滑动标签使用
