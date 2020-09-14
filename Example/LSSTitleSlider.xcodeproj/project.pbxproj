@@ -50,7 +50,7 @@
 		4543963624F60A7700DDD2CD /* PushOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushOneViewController.h; sourceTree = "<group>"; };
 		4543963724F60A7700DDD2CD /* PushOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushOneViewController.m; sourceTree = "<group>"; };
 		4543963824F60A7800DDD2CD /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* LSSTitleSlider_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSSTitleSlider_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* LSSTitleSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSSTitleSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -130,7 +130,7 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* LSSTitleSlider_Example.app */,
+				6003F58A195388D20070C39A /* LSSTitleSlider.app */,
 				6003F5AE195388D20070C39A /* LSSTitleSlider_Tests.xctest */,
 			);
 			name = Products;
@@ -230,7 +230,7 @@
 			);
 			name = LSSTitleSlider_Example;
 			productName = LSSTitleSlider;
-			productReference = 6003F58A195388D20070C39A /* LSSTitleSlider_Example.app */;
+			productReference = 6003F58A195388D20070C39A /* LSSTitleSlider.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6003F5AD195388D20070C39A /* LSSTitleSlider_Tests */ = {
@@ -540,7 +540,7 @@
 				INFOPLIST_FILE = "LSSTitleSlider/LSSTitleSlider-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LSSTitleSlider;
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -557,7 +557,7 @@
 				INFOPLIST_FILE = "LSSTitleSlider/LSSTitleSlider-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LSSTitleSlider;
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};

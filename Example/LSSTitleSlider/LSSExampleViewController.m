@@ -29,7 +29,7 @@
     self.config.scrollHeight = 200;
     //self.config.scrollWidth = 200;//目前鸡肋，目前只适用宽度为手机屏幕
     self.config.style = LSSTitleSlideStyleLeft;
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     //UI布局
     [self loadNavSliderView];
     //最后设置当前页面
