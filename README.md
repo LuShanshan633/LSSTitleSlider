@@ -26,6 +26,9 @@ pod 'LSSTitleSlider'
 
 LuShanshan633
 
+[掘金主页](https://juejin.im/user/3386151544563576)
+
+
 ## License
 
 LSSTitleSlider is available under the MIT license. See the LICENSE file for more info.
